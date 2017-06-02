@@ -1,0 +1,4 @@
+/Library
+/Temp
+/Assets/*
+!/Assets/my_assets
