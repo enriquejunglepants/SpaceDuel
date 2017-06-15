@@ -15,10 +15,9 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
-        // shoot the projectile
-        GetComponent<Rigidbody>().velocity += transform.forward * speed;
         Destroy(this.gameObject, lifespan);
-        //m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody.velocity = transform.forward * speed;
         //line = GetComponent<LineRenderer>();
         //line.useWorldSpace = false;
     }
@@ -30,8 +29,6 @@ public class Weapon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //transform.localPosition = new Vector3(0,0,100);
-        //m_Rigidbody.AddForce(transform.forward, ForceMode.Impulse);
     }
 
     /*
@@ -43,20 +40,18 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.logger.Log("hit " + collision.gameObject.name);
+        Debug.logger.Log("hit " + collision.collider.name);
         Health hurtable = collision.gameObject.GetComponent<Health>();
         if (hurtable)
         {
             hurtable.Hit(damage);
         }
-        else
+        /*
+        hurtable = collision.collider.GetComponent<Health>();
+        if (hurtable)
         {
-            hurtable = collision.gameObject.GetComponentInChildren<Health>();
-            if (hurtable)
-            {
-                hurtable.Hit(damage);
-            }
-        }
+            hurtable.Hit(damage);
+        }*/
 
         Destroy(this.gameObject);
     }

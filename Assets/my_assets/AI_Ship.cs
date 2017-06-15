@@ -10,7 +10,6 @@ public class AI_Ship : MonoBehaviour
     public Transform bulletSpawn;
 
     [SerializeField] private float acceleration,thrust, friction;
-
     [SerializeField] private Vector3 turn,distance_between;
 
     public float turn_speed, thrust_thresh,fire_thresh,thrust_dist;
@@ -19,13 +18,16 @@ public class AI_Ship : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Health health;
 
+    private float last_shot,fire_rate=3;
+
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
 
-        health = GetComponentInChildren<Health>();
+        health = GetComponent<Health>();
 
-        ship_transform = GetComponentInChildren<Collider>().transform;
+        ship_transform = transform;
         if (!target)
         {
             target = GameObject.FindGameObjectWithTag("Player");
@@ -82,13 +84,14 @@ public class AI_Ship : MonoBehaviour
 
     void Fire()
     {
-        // create a projectile
-        var bullet = (GameObject)Instantiate(
+        if ((Time.time - last_shot) * fire_rate >= 1)
+        {
+            var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
             bulletSpawn.rotation);
-        //bullet.transform.parent = bulletSpawn.transform.parent;
-        //bullet.GetComponent<Rigidbody>().velocity = m_Rigidbody.velocity;
+            last_shot = Time.time;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

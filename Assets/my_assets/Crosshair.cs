@@ -17,7 +17,7 @@ public class Crosshair : MonoBehaviour {
 
 
     void Start () {
-        main_camera = GameObject.FindGameObjectWithTag("Player").GetComponent<Camera>();
+        main_camera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
     }
 	
 	void Update () {
@@ -51,7 +51,6 @@ public class Crosshair : MonoBehaviour {
     {
         Vector3 arrow = main_camera.WorldToScreenPoint(target.transform.position);
         
-
         if (arrow.z > 0)
         {
             //target is not behind you

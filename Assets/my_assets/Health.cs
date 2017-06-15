@@ -27,11 +27,14 @@ public class Health : MonoBehaviour {
 
     void Die()
     {
-        float radius = 5000;
-        current_health = max_health;
-        transform.position = new Vector3(Random.Range(-radius, radius),
-                                    Random.Range(-radius, radius),
-                                    Random.Range(-radius, radius));
-        //Destroy(this.gameObject);
+        if (gameObject.GetComponent<Rigidbody>())
+        {
+            float radius = 5000;
+            current_health = max_health;
+            transform.position = new Vector3(Random.Range(-radius, radius),
+                                        Random.Range(-radius, radius),
+                                        Random.Range(-radius, radius));
+        }
+        else Destroy(this.gameObject);
     }
 }

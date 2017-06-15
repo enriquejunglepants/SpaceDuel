@@ -28,7 +28,11 @@ public class ShipController : MonoBehaviour
 
     private Rigidbody m_Rigidbody;
     private Health health;
-    public Slider healthbar;
+    //public Slider healthbar;
+
+    public RectTransform healthbar;
+
+    private float last_shot, fire_rate = 3;
 
     void Start()
     {
@@ -39,10 +43,6 @@ public class ShipController : MonoBehaviour
         spacedust = GetComponentInChildren<ParticleSystem>();
         health = GetComponentInChildren<Health>();
 
-        healthbar = GameObject.FindGameObjectWithTag("hud").GetComponentInChildren<Slider>();
-        healthbar.maxValue = health.max_health;
-        healthbar.minValue = 0;
-
         if (!bulletSpawn)
         {
             bulletSpawn = Instantiate(new GameObject("bulletSpawn"), transform).transform;
@@ -50,27 +50,34 @@ public class ShipController : MonoBehaviour
             bulletSpawn.position = transform.position + transform.forward * 10;
         }
 
-        
 
 
+        #if UNITY_ANDROID
         //fireButton.onClick.AddListener(Fire);
+        #endif
     }
 
     void Update()
     {
+
+#if UNITY_ANDROID
         //turn camera based on motion of phone
-        //m_Camera.transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+        m_Camera.transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+
+#else
         transform.Rotate(-Input.GetAxis("Mouse Y")*2, Input.GetAxis("Mouse X")*2, 0);
-
-        if (healthbar)
-        {
-            healthbar.value = health.current_health;
-        }
-
         if (Input.GetKey(KeyCode.Space))
         {
             Fire();
         }
+#endif
+
+        if (healthbar)
+        {
+            healthbar.sizeDelta = new Vector2(100 * health.current_health / health.max_health, 10);
+        }
+
+        
 
         //thrust.value = Input.GetAxis("Vertical");
 
@@ -89,14 +96,14 @@ public class ShipController : MonoBehaviour
 
     void Fire()
     {
-        // create a projectile
-        var bullet = (GameObject)Instantiate(
+        if ((Time.time - last_shot) * fire_rate >= 1)
+        {
+            var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
-            transform.rotation);
-
-        //bullet.transform.parent = bulletSpawn.transform.parent;
-        //bullet.GetComponent<Rigidbody>().velocity = m_Rigidbody.velocity;
+            bulletSpawn.rotation);
+            last_shot = Time.time;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
