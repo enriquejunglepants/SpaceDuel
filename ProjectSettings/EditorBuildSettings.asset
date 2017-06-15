@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: a1e768592bb06a447bea11bde9a14207
-  - enabled: 1
-    path: Assets/my_assets/space.unity
+  - enabled: 0
+    path: 
     guid: 83ceb41f5f10eeb49aaf135991426b23

@@ -53,7 +53,7 @@ public class ShipController : MonoBehaviour
 
 
         #if UNITY_ANDROID
-        //fireButton.onClick.AddListener(Fire);
+            fireButton.onClick.AddListener(Fire);
         #endif
     }
 
@@ -62,9 +62,9 @@ public class ShipController : MonoBehaviour
 
 #if UNITY_ANDROID
         //turn camera based on motion of phone
-        m_Camera.transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
-
-#else
+        transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+#endif
+#if UNITY_EDITOR
         transform.Rotate(-Input.GetAxis("Mouse Y")*2, Input.GetAxis("Mouse X")*2, 0);
         if (Input.GetKey(KeyCode.Space))
         {
@@ -90,8 +90,14 @@ public class ShipController : MonoBehaviour
         m_Rigidbody.angularVelocity *= (1 - friction);
 
         //THRUSTERS
-        m_Rigidbody.AddForce(transform.forward * Input.GetAxis("Vertical") * acceleration, ForceMode.Impulse);
 
+#if UNITY_ANDROID
+        if(Input.GetMouseButtonDown(0))
+            m_Rigidbody.AddForce(transform.forward * acceleration, ForceMode.Impulse);
+#endif
+#if UNITY_EDITOR
+        m_Rigidbody.AddForce(transform.forward * Input.GetAxis("Vertical") * acceleration, ForceMode.Impulse);
+#endif
     }
 
     void Fire()
