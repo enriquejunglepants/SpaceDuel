@@ -7,7 +7,9 @@ public class Healthbar : MonoBehaviour {
     public Health health;
     public RectTransform bar;
 	void Start () {
-	}
+        
+        //health = transform.root.GetComponentInChildren<Health>();
+    }
 	
 	void Update () {
         bar.anchorMax = new Vector2(health.current_health/health.max_health,bar.anchorMax.y);

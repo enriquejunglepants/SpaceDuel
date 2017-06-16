@@ -7,16 +7,15 @@ public class Crosshair : MonoBehaviour {
 
     private Canvas hud;
     private GameObject target;
-    public Health health;
-
     public Text name_text,distance_text;
-    public RectTransform healthbar,square;
+    public RectTransform square;
     public Bounds target_bounds;
 
     private Camera main_camera;
 
 
     void Start () {
+        GetComponentInChildren<Healthbar>().health = target.GetComponent<Health>();
         main_camera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
     }
 	
@@ -27,12 +26,6 @@ public class Crosshair : MonoBehaviour {
         }
         else
         {
-            if (health)
-            {
-                healthbar.sizeDelta = new Vector2(100 * health.current_health / health.max_health, 10);
-                //healthbar.value = health.current_health;
-            }
-
             Navigate();
         }
     }
@@ -40,10 +33,7 @@ public class Crosshair : MonoBehaviour {
     public void SetTarget(GameObject new_target)
     {
         target = new_target;
-        health = target.GetComponent<Health>();
         target_bounds = target.GetComponent<Collider>().bounds;
-        //healthbar.minValue = 0;
-        //healthbar.maxValue = health.max_health;
         name_text.text = target.name;
     }
 
