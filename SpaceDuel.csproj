@@ -89,6 +89,7 @@
     <Compile Include="Assets\my_assets\Aircraft\Scripts\JetParticleEffect.cs" />
     <Compile Include="Assets\my_assets\Aircraft\Scripts\LandingGear.cs" />
     <Compile Include="Assets\my_assets\BeamScript.cs" />
+    <Compile Include="Assets\my_assets\Blaster.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\my_assets\Crosshair.cs" />
     <Compile Include="Assets\my_assets\Health.cs" />
+    <Compile Include="Assets\my_assets\Healthbar.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\ExplosionFireAndDebris.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Assets\my_assets\Portal.cs" />
     <Compile Include="Assets\my_assets\ShipController.cs" />
     <Compile Include="Assets\my_assets\Target.cs" />
+    <Compile Include="Assets\my_assets\ThrusterControl.cs" />
     <Compile Include="Assets\my_assets\Utility\ActivateTrigger.cs" />
     <Compile Include="Assets\my_assets\Utility\AlphaButtonClickMask.cs" />
     <Compile Include="Assets\my_assets\Utility\AutoMobileShaderSwitch.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="Assets\my_assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\my_assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\my_assets\Weapon.cs" />
+    <Compile Include="Assets\my_assets\WeaponControlScript.cs" />
     <Compile Include="Assets\my_assets\createEnv.cs" />
   </ItemGroup>
   <ItemGroup>

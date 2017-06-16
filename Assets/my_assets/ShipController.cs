@@ -6,33 +6,35 @@ using System.Collections.Generic;
 
 public class ShipController : MonoBehaviour
 {
-
-    public GameObject planetPrefab;
-
+    
     public ParticleSystem spacedust;
 
     public Button fireButton;
+
+    [SerializeField] private List<Weapon> weapons = new List<Weapon>();
+
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+
     public Animation warp_animation;
-    public List<LineRenderer> lines = new List<LineRenderer>();
+
+    
     public float velocity;
 
     [SerializeField] private float acceleration;
     [SerializeField] private float friction;
 
-    [SerializeField] private Slider thrust;
+    public float thrust;
 
-    private float max_speed = 0;
+    //private float max_speed = 0;
     private Camera m_Camera;
 
     private Rigidbody m_Rigidbody;
     private Health health;
-    //public Slider healthbar;
-
-    public RectTransform healthbar;
-
+    
     private float last_shot, fire_rate = 3;
+
+    public Boolean firing,thrusting;
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class ShipController : MonoBehaviour
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Camera = Camera.main;
-        spacedust = GetComponentInChildren<ParticleSystem>();
+        //spacedust = GetComponentInChildren<ParticleSystem>();
         health = GetComponentInChildren<Health>();
 
         if (!bulletSpawn)
@@ -50,19 +52,32 @@ public class ShipController : MonoBehaviour
             bulletSpawn.position = transform.position + transform.forward * 10;
         }
 
-
+        
 
         #if UNITY_ANDROID
-            fireButton.onClick.AddListener(Fire);
+            //fireButton.onClick.AddListener(Fire);
         #endif
     }
 
     void Update()
     {
-
+        if (velocity < .0001)
+        {
+            //prevent spacedust death until moving
+            spacedust.Pause();
+        }
+        else
+        {
+            spacedust.Play();
+        }
+    
 #if UNITY_ANDROID
         //turn camera based on motion of phone
         transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+        if (firing)
+        {
+            Fire();
+        }
 #endif
 #if UNITY_EDITOR
         transform.Rotate(-Input.GetAxis("Mouse Y")*2, Input.GetAxis("Mouse X")*2, 0);
@@ -71,15 +86,6 @@ public class ShipController : MonoBehaviour
             Fire();
         }
 #endif
-
-        if (healthbar)
-        {
-            healthbar.sizeDelta = new Vector2(100 * health.current_health / health.max_health, 10);
-        }
-
-        
-
-        //thrust.value = Input.GetAxis("Vertical");
 
         velocity = m_Rigidbody.velocity.magnitude;
     }
@@ -92,10 +98,13 @@ public class ShipController : MonoBehaviour
         //THRUSTERS
 
 #if UNITY_ANDROID
-        if(Input.GetMouseButtonDown(0))
-            m_Rigidbody.AddForce(transform.forward * acceleration, ForceMode.Impulse);
+        if (thrusting)
+        {
+            m_Rigidbody.AddForce(transform.forward * acceleration * thrust, ForceMode.Impulse);
+        }
 #endif
 #if UNITY_EDITOR
+        //m_Rigidbody.AddForce(transform.forward * acceleration * thrust, ForceMode.Impulse);
         m_Rigidbody.AddForce(transform.forward * Input.GetAxis("Vertical") * acceleration, ForceMode.Impulse);
 #endif
     }

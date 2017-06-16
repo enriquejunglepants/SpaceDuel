@@ -3,7 +3,6 @@
 public class createEnv : MonoBehaviour {
 
     public GameObject planetPrefab;
-    public GameObject player;
     public int num_planets;
     public float radius;
 	// Use this for initialization
