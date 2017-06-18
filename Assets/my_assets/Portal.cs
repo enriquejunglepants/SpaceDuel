@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Portal : MonoBehaviour {
+public class Portal : Weapon {
 
     public Portal otherPortal;
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+
+    protected override void Start()
+    {
+
+    }
+
+    protected override void Update()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {

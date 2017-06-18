@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -92,6 +90,7 @@
     <Compile Include="Assets\my_assets\Aircraft\Scripts\LandingGear.cs" />
     <Compile Include="Assets\my_assets\BeamScript.cs" />
     <Compile Include="Assets\my_assets\Blaster.cs" />
+    <Compile Include="Assets\my_assets\Bomb.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\my_assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
@@ -106,6 +105,8 @@
     <Compile Include="Assets\my_assets\Crosshair.cs" />
     <Compile Include="Assets\my_assets\Health.cs" />
     <Compile Include="Assets\my_assets\Healthbar.cs" />
+    <Compile Include="Assets\my_assets\Laser.cs" />
+    <Compile Include="Assets\my_assets\Missile.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\ExplosionFireAndDebris.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
@@ -116,9 +117,9 @@
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\SmokeParticles.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
+    <Compile Include="Assets\my_assets\PlayerShip.cs" />
     <Compile Include="Assets\my_assets\Portal.cs" />
     <Compile Include="Assets\my_assets\Ship.cs" />
-    <Compile Include="Assets\my_assets\PlayerShip.cs" />
     <Compile Include="Assets\my_assets\Target.cs" />
     <Compile Include="Assets\my_assets\ThrusterControl.cs" />
     <Compile Include="Assets\my_assets\Utility\ActivateTrigger.cs" />

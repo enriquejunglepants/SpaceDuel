@@ -1175,7 +1175,7 @@ RectTransform:
   - {fileID: 2116701267}
   - {fileID: 88071388}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 114103820040176944, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
+  - {fileID: 114869380113548556, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
   bulletSpawn: {fileID: 1624272881}
   velocity: 0
   acceleration: 2
@@ -1790,7 +1790,7 @@ Transform:
   - {fileID: 309034739}
   - {fileID: 2077437405}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 109.393005, z: 0}
 --- !u!1001 &1147129261
 Prefab:
@@ -2032,7 +2032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1236527099
 Prefab:
@@ -5355,7 +5355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1489981598
 Prefab:
@@ -5719,6 +5719,34 @@ Transform:
   m_Father: {fileID: 985522256}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1687504076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1687504077}
+  m_Layer: 0
+  m_Name: Laser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687504077
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687504076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -910.629, y: 0.049443066, z: 877.82874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691173636 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010590945616, guid: 7ba836a4e34305a4ba0a9d20da5d4735,
@@ -6070,7 +6098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 114103820040176944, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
+  - {fileID: 114869380113548556, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
   bulletSpawn: {fileID: 1526197067}
   velocity: 0
   acceleration: 2
@@ -6146,7 +6174,7 @@ Transform:
   - {fileID: 862552915}
   - {fileID: 1526197067}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938740419 stripped
 GameObject:

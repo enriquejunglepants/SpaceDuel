@@ -66,5 +66,6 @@ public class Ship : MonoBehaviour
 
             last_shot = Time.time;
         }
+        firing = false;
     }
 }
