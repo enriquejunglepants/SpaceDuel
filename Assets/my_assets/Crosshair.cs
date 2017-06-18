@@ -11,6 +11,8 @@ public class Crosshair : MonoBehaviour {
     public RectTransform square;
     public Bounds target_bounds;
 
+    public float default_x = 20, default_y = 20;
+
     private Camera main_camera;
 
 
@@ -33,8 +35,20 @@ public class Crosshair : MonoBehaviour {
     public void SetTarget(GameObject new_target)
     {
         target = new_target;
-        target_bounds = target.GetComponent<Collider>().bounds;
+        //target_bounds = target.GetComponent<Collider>().bounds;
         name_text.text = target.name;
+    }
+
+    public void RecalculateBounds()
+    {
+        target_bounds = new Bounds(Vector3.zero, Vector3.zero);
+        foreach (MeshFilter mf in target.GetComponentsInChildren<MeshFilter>())
+        {
+            Bounds part_bounds = new Bounds(mf.transform.localPosition, new Vector3(mf.mesh.bounds.size.x * mf.transform.localScale.x,
+                                                                                    mf.mesh.bounds.size.y * mf.transform.localScale.y,
+                                                                                    mf.mesh.bounds.size.z * mf.transform.localScale.z));
+            target_bounds.Encapsulate(part_bounds);
+        }
     }
 
     void Navigate()
@@ -49,15 +63,16 @@ public class Crosshair : MonoBehaviour {
             {
                 //target is visible on screen
                 //Bounds target_bounds = target.GetComponent<Collider>().bounds;
+                RecalculateBounds();
 
-                Vector2[] verts = { main_camera.WorldToScreenPoint(new Vector3(target_bounds.max.x, target_bounds.max.y, target_bounds.max.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.max.x, target_bounds.max.y, target_bounds.min.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.max.x, target_bounds.min.y, target_bounds.max.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.max.x, target_bounds.min.y, target_bounds.min.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.min.x, target_bounds.max.y, target_bounds.max.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.min.x, target_bounds.max.y, target_bounds.min.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.min.x, target_bounds.min.y, target_bounds.max.z)),
-                                    main_camera.WorldToScreenPoint(new Vector3(target_bounds.min.x, target_bounds.min.y, target_bounds.min.z))};
+                Vector2[] verts = { main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.max.x, target_bounds.max.y, target_bounds.max.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.max.x, target_bounds.max.y, target_bounds.min.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.max.x, target_bounds.min.y, target_bounds.max.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.max.x, target_bounds.min.y, target_bounds.min.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.min.x, target_bounds.max.y, target_bounds.max.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.min.x, target_bounds.max.y, target_bounds.min.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.min.x, target_bounds.min.y, target_bounds.max.z))),
+                                    main_camera.WorldToScreenPoint(target.transform.TransformPoint(new Vector3(target_bounds.min.x, target_bounds.min.y, target_bounds.min.z)))};
 
                 float min_x = verts[0].x,
                         max_x = verts[0].x,
@@ -84,10 +99,8 @@ public class Crosshair : MonoBehaviour {
                     }
                 }
 
-                square.sizeDelta = new Vector2(max_x - min_x, max_y - min_y);
+                square.sizeDelta = new Vector2(Mathf.Max(max_x - min_x,default_x), Mathf.Max(max_y - min_y, default_y));
                 
-                //name_text.transform.position = new Vector3(arrow.x,max_y,0);
-                //name_text.transform.position = new Vector3(arrow.x, max_y, 0);
             }
             else
             {
@@ -107,7 +120,7 @@ public class Crosshair : MonoBehaviour {
                 {
                     arrow.y = 0;
                 }
-                square.sizeDelta = new Vector2(100, 100);
+                square.sizeDelta = new Vector2(default_x, default_y);
             }
         }
         else

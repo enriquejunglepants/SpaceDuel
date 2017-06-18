@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.logger.Log("hit " + collision.collider.name);
+        //Debug.logger.Log("hit " + collision.collider.name);
         Health hurtable = collision.gameObject.GetComponent<Health>();
         if (hurtable)
         {
