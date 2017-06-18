@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 
 public class WeaponControlScript : EventTrigger {
 
-    public ShipController player;
+    public PlayerShip player;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
     }
 
     public override void OnDrag(PointerEventData eventData)

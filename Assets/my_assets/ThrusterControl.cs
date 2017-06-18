@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 public class ThrusterControl : EventTrigger
 {
 
-    public ShipController player;
+    public PlayerShip player;
     public RectTransform filler;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
         filler = GetComponentsInChildren<RectTransform>()[1];
     }
 

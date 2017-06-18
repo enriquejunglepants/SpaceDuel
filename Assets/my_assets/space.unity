@@ -1717,19 +1717,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01eec6611b4920e4db3b5eef1d54730e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spacedust: {fileID: 1301856274}
-  fireButton: {fileID: 495515112}
-  weapons: []
-  bulletPrefab: {fileID: 1930228461686880, guid: 6ca0aa1efc52e5a4888b54dd93050dfa,
-    type: 2}
+  weapons:
+  - {fileID: 114103820040176944, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
   bulletSpawn: {fileID: 1624272881}
-  warp_animation: {fileID: 0}
   velocity: 0
   acceleration: 2
-  friction: 0
   thrust: 0
   firing: 0
   thrusting: 0
+  spacedust: {fileID: 1301856274}
 --- !u!114 &985522249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1963,7 +1959,33 @@ Prefab:
     - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
         type: 2}
       propertyPath: m_Text
-      value: portal
+      value: WEAPON NAME
+      objectReference: {fileID: 0}
+    - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: de93e5b7d5627834e98afb0aa6b9cf9a,
+        type: 3}
+    - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
+        type: 2}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114038272236299270, guid: e98b43c9d54d81b4ab49304beccb048a,
+        type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e98b43c9d54d81b4ab49304beccb048a, type: 2}
@@ -6047,12 +6069,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b2da34e2e4ad54291e6e12bae5fe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1930228461686880, guid: 6ca0aa1efc52e5a4888b54dd93050dfa,
-    type: 2}
+  weapons:
+  - {fileID: 114103820040176944, guid: 6ca0aa1efc52e5a4888b54dd93050dfa, type: 2}
   bulletSpawn: {fileID: 1526197067}
+  velocity: 0
   acceleration: 2
   thrust: 0
-  friction: 0.01
+  firing: 0
+  thrusting: 0
   turn: {x: 0, y: 0, z: 0}
   distance_between: {x: 0, y: 0, z: 0}
   turn_speed: 50
@@ -6060,7 +6084,6 @@ MonoBehaviour:
   fire_thresh: 0.1
   thrust_dist: 200
   target: {fileID: 985522247}
-  color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &1909044104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6095,8 +6118,8 @@ Rigidbody:
   m_GameObject: {fileID: 1909044102}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 2
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -6277,7 +6300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2116701267
 RectTransform:
   m_ObjectHideFlags: 0

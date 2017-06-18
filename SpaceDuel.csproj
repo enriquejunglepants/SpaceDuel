@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -115,7 +117,8 @@
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\SmokeParticles.cs" />
     <Compile Include="Assets\my_assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
     <Compile Include="Assets\my_assets\Portal.cs" />
-    <Compile Include="Assets\my_assets\ShipController.cs" />
+    <Compile Include="Assets\my_assets\Ship.cs" />
+    <Compile Include="Assets\my_assets\PlayerShip.cs" />
     <Compile Include="Assets\my_assets\Target.cs" />
     <Compile Include="Assets\my_assets\ThrusterControl.cs" />
     <Compile Include="Assets\my_assets\Utility\ActivateTrigger.cs" />

@@ -16,10 +16,10 @@ public class Portal : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         other.transform.root.position = otherPortal.transform.position;
-        ShipController otherShip = other.gameObject.GetComponent<ShipController>();
+        PlayerShip otherShip = other.gameObject.GetComponent<PlayerShip>();
         if (otherShip)
         {
-            otherShip.Warp();
+            //otherShip.Warp();
         }
     }
 }
