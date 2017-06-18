@@ -10,9 +10,9 @@ using System.Collections.Generic;
 public class Ship : MonoBehaviour
 {
     
-    [SerializeField] private List<Weapon> weapons = new List<Weapon>();
+    [SerializeField] public List<Weapon> weapons = new List<Weapon>();
 
-    private int selected_weapon = 0;
+    public int selected_weapon = 0;
 
     public Transform bulletSpawn;
 
@@ -60,12 +60,25 @@ public class Ship : MonoBehaviour
     {
         if ((Time.time - last_shot) * fire_rate >= 1)
         {
-            Instantiate(weapons[selected_weapon].gameObject,
+            Weapon bullet = Instantiate(weapons[selected_weapon].gameObject,
                         bulletSpawn.position,
-                        bulletSpawn.rotation);
-
+                        bulletSpawn.rotation).GetComponent<Weapon>();
+            bullet.shooter = this;
             last_shot = Time.time;
         }
         firing = false;
+    }
+
+    public Bounds GetBounds()
+    {
+        Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        foreach (MeshFilter mf in gameObject.GetComponentsInChildren<MeshFilter>())
+        {
+            Bounds part_bounds = new Bounds(mf.transform.localPosition, new Vector3(mf.mesh.bounds.size.x * mf.transform.localScale.x,
+                                                                                    mf.mesh.bounds.size.y * mf.transform.localScale.y,
+                                                                                    mf.mesh.bounds.size.z * mf.transform.localScale.z));
+            bounds.Encapsulate(part_bounds);
+        }
+        return bounds;
     }
 }

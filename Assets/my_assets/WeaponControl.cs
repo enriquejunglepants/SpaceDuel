@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class WeaponControlScript : EventTrigger {
+public class WeaponControl : EventTrigger {
 
     public PlayerShip player;
+    [SerializeField] public Image weapon_icon;
+    [SerializeField] public Text weapon_name;
 
     private void Start()
     {

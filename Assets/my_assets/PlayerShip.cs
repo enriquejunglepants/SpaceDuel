@@ -11,7 +11,9 @@ public class PlayerShip : Ship
     //public Button fireButton;
 
     private Camera m_Camera;
-    
+    public WeaponSelector selector;
+    public float weapon_scroll = 0;
+
     protected override void Start()
     {
         base.Start();
@@ -33,6 +35,24 @@ public class PlayerShip : Ship
                 {
                     firing = true;
                 }
+
+        weapon_scroll += (Input.GetAxis("Mouse ScrollWheel"));
+        if (weapon_scroll < 0)
+        {
+            weapon_scroll = 0;
+        }
+        else if (weapon_scroll > weapons.Count - 1)
+        {
+            weapon_scroll = weapons.Count - 1;
+        }
+        if(selected_weapon != Mathf.RoundToInt(weapon_scroll))
+        {
+            selected_weapon = Mathf.RoundToInt(weapon_scroll);
+            selector.SetIcon(weapons[selected_weapon].icon);
+            selector.SetName(weapons[selected_weapon].weapon_name);
+        }
+        //if(scroll!=0) Debug.Log(scroll);
+                
         #endif
     }
 

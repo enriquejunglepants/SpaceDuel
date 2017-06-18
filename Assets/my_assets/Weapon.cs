@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-
+    public Ship shooter;
     public float damage;
     public float lifespan;
     public float speed;

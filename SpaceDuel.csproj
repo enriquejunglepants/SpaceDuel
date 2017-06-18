@@ -147,7 +147,8 @@
     <Compile Include="Assets\my_assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\my_assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\my_assets\Weapon.cs" />
-    <Compile Include="Assets\my_assets\WeaponControlScript.cs" />
+    <Compile Include="Assets\my_assets\WeaponControl.cs" />
+    <Compile Include="Assets\my_assets\WeaponSelector.cs" />
     <Compile Include="Assets\my_assets\createEnv.cs" />
   </ItemGroup>
   <ItemGroup>

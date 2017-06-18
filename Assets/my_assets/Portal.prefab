@@ -54,6 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9deb2a16779dd47b20fa7964326df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooter: {fileID: 0}
+  damage: 0
+  lifespan: 10000
+  speed: 0
+  icon: {fileID: 2800000, guid: 82260cdad9edf6a4c97c4a25841e6026, type: 3}
+  weapon_name: PORTAL
+  m_Rigidbody: {fileID: 0}
   otherPortal: {fileID: 0}
 --- !u!135 &135174664286551998
 SphereCollider:
