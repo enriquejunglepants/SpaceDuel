@@ -50,9 +50,10 @@ public class PlayerShip : Ship
                 weapon_scroll = weapons.Count - 1;
             }
             ChangeWeapon(Mathf.RoundToInt(scroll_change));
+
         }
         //if(scroll!=0) Debug.Log(scroll);
-                
+
         #endif
     }
 
