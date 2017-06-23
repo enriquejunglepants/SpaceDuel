@@ -2,15 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : Weapon
-{
-    protected override void Start()
-    {
-
-    }
-
-    protected override void Update()
-    {
-
-    }
-}
+public class Bomb : Weapon {}

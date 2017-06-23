@@ -93,12 +93,14 @@
     <Compile Include="Assets\my_assets\Scripts\Blaster.cs" />
     <Compile Include="Assets\my_assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\my_assets\Scripts\Crosshair.cs" />
+    <Compile Include="Assets\my_assets\Scripts\EMP.cs" />
     <Compile Include="Assets\my_assets\Scripts\Health.cs" />
     <Compile Include="Assets\my_assets\Scripts\Healthbar.cs" />
     <Compile Include="Assets\my_assets\Scripts\Laser.cs" />
     <Compile Include="Assets\my_assets\Scripts\Missile.cs" />
     <Compile Include="Assets\my_assets\Scripts\PlayerShip.cs" />
     <Compile Include="Assets\my_assets\Scripts\Portal.cs" />
+    <Compile Include="Assets\my_assets\Scripts\Railgun.cs" />
     <Compile Include="Assets\my_assets\Scripts\Ship.cs" />
     <Compile Include="Assets\my_assets\Scripts\Target.cs" />
     <Compile Include="Assets\my_assets\Scripts\ThrusterControl.cs" />

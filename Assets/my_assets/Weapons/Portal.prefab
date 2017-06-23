@@ -58,7 +58,7 @@ MonoBehaviour:
   damage: 0
   lifespan: 10000
   speed: 0
-  icon: {fileID: 2800000, guid: 82260cdad9edf6a4c97c4a25841e6026, type: 3}
+  icon: {fileID: 2800000, guid: 1b3828c5d381c864b932f8c3b2a92f58, type: 3}
   weapon_name: PORTAL
   m_Rigidbody: {fileID: 0}
   otherPortal: {fileID: 0}

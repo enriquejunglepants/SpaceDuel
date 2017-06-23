@@ -2,12 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missile : Weapon {
-	protected override void Start () {
-		
-	}
-    
-    protected override void Update () {
-		
-	}
-}
+public class Missile : Weapon {}
