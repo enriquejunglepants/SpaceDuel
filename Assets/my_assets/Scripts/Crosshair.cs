@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Crosshair : MonoBehaviour {
 
     private Canvas hud;
-    private GameObject target;
+    private GameObject target,player;
     public Text name_text,distance_text;
     public RectTransform square;
     public Bounds target_bounds;
@@ -18,7 +18,8 @@ public class Crosshair : MonoBehaviour {
 
     void Start () {
         GetComponentInChildren<Healthbar>().health = target.GetComponent<Health>();
-        main_camera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        main_camera = player.GetComponentInChildren<Camera>();
     }
 	
 	void Update () {
@@ -28,6 +29,7 @@ public class Crosshair : MonoBehaviour {
         }
         else
         {
+            distance_text.text = (player.transform.position - target.transform.position).magnitude + "m";
             Navigate();
         }
     }

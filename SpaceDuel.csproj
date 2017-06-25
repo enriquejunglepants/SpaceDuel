@@ -101,6 +101,7 @@
     <Compile Include="Assets\my_assets\Scripts\PlayerShip.cs" />
     <Compile Include="Assets\my_assets\Scripts\Portal.cs" />
     <Compile Include="Assets\my_assets\Scripts\Railgun.cs" />
+    <Compile Include="Assets\my_assets\Scripts\Shield.cs" />
     <Compile Include="Assets\my_assets\Scripts\Ship.cs" />
     <Compile Include="Assets\my_assets\Scripts\Target.cs" />
     <Compile Include="Assets\my_assets\Scripts\ThrusterControl.cs" />

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Portal : Weapon {
 
     public Portal otherPortal;
-    public Collider m_collider;
 
     protected override void Start()
     {

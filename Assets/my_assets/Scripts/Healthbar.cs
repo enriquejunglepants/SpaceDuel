@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Healthbar : MonoBehaviour {
 
-    public Health health;
-    public RectTransform bar;
+    public Health health,shield_health;
+    public RectTransform bar,shield;
 	void Start () {
         
         //health = transform.root.GetComponentInChildren<Health>();
@@ -13,5 +13,9 @@ public class Healthbar : MonoBehaviour {
 	
 	void Update () {
         bar.anchorMax = new Vector2(health.current_health/health.max_health,bar.anchorMax.y);
-	}
+        if (shield)
+        {
+            shield.anchorMax = new Vector2(shield_health.current_health / shield_health.max_health, shield.anchorMax.y);
+        }
+    }
 }

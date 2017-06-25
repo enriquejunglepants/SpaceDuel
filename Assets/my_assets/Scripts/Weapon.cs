@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     {
         Destroy(this.gameObject, lifespan);
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_Rigidbody.velocity = transform.forward * speed;
+        m_Rigidbody.velocity += transform.forward * speed;
 
         m_collider = GetComponent<Collider>();
 
@@ -41,18 +41,30 @@ public class Weapon : MonoBehaviour
     protected virtual void OnCollisionEnter(Collision collision)
     {
         //Debug.logger.Log("hit " + collision.collider.name);
-        Health hurtable = collision.transform.root.GetComponent<Health>();
-        if (hurtable)
+        Health hurtable;
+        if (collision.collider.name.Equals("Shield"))
         {
-            hurtable.Hit(damage);
+            hurtable = collision.collider.GetComponent<Health>();
+            if (hurtable)
+            {
+                hurtable.Hit(damage);
+            }
         }
-        /*
-        hurtable = collision.collider.GetComponent<Health>();
-        if (hurtable)
+        else
         {
-            hurtable.Hit(damage);
-        }*/
+            hurtable = collision.transform.root.GetComponent<Health>();
+            if (hurtable)
+            {
+                hurtable.Hit(damage);
+            }
+            /*
+            hurtable = collision.collider.GetComponent<Health>();
+            if (hurtable)
+            {
+                hurtable.Hit(damage);
+            }*/
+        }
 
-        Destroy(this.gameObject);
+        Destroy(m_collider);
     }
 }

@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour
 
     public Transform bulletSpawn;
 
-    public float velocity,acceleration;
+    public float velocity,acceleration,max_speed;
 
     public float thrust;
 
@@ -28,10 +28,12 @@ public class Ship : MonoBehaviour
 
     public Portal portalA,portalB;
 
+    protected Health m_health;
+
     protected virtual void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-
+        m_health = GetComponent<Health>();
         if (!bulletSpawn)
         {
             bulletSpawn = Instantiate(new GameObject("bulletSpawn"), transform).transform;
@@ -52,7 +54,7 @@ public class Ship : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         //THRUSTERS
-        if (thrusting)
+        if (thrusting && velocity<max_speed)
         {
             m_Rigidbody.AddForce(transform.forward * acceleration * thrust, ForceMode.Impulse);
         }
@@ -66,6 +68,7 @@ public class Ship : MonoBehaviour
                         bulletSpawn.position,
                         bulletSpawn.rotation).GetComponent<Weapon>();
             bullet.shooter = this;
+            bullet.GetComponent<Rigidbody>().velocity = transform.forward*velocity;
             last_shot = Time.time;
         }
         firing = false;
@@ -82,5 +85,15 @@ public class Ship : MonoBehaviour
             bounds.Encapsulate(part_bounds);
         }
         return bounds;
+    }
+
+    public void Die()
+    {
+        Debug.Log("Ship down");
+        float radius = 5000;
+        m_health.current_health = m_health.max_health;
+        transform.position = new Vector3(UnityEngine.Random.Range(-radius, radius),
+                                    UnityEngine.Random.Range(-radius, radius),
+                                    UnityEngine.Random.Range(-radius, radius));
     }
 }
