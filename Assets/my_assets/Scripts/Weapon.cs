@@ -65,6 +65,6 @@ public class Weapon : MonoBehaviour
             }*/
         }
 
-        Destroy(m_collider);
+        Destroy(gameObject);
     }
 }

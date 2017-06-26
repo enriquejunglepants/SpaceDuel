@@ -5,10 +5,11 @@ using UnityEngine;
 public class Shield : MonoBehaviour {
 
     // Use this for initialization
-    public float reload_time=3, remaining_time=0;
+    public float reload_time=3, remaining_time=0,regen_rate = .5f;
     private Collider m_collider;
     private Health m_health;
     public Animator m_animator;
+
 
 	void Start () {
         m_collider = GetComponent<Collider>();
@@ -33,10 +34,19 @@ public class Shield : MonoBehaviour {
                 m_animator.SetTrigger("reload");
             }
         }
+        else
+        {
+            m_health.current_health += regen_rate;
+            if (m_health.current_health > m_health.max_health)
+            {
+                m_health.current_health = m_health.max_health;
+            }
+        }
 	}
 
     public void Die()
     {
+        m_animator.SetTrigger("down");
         Debug.Log("Shield down");
         m_collider.enabled = false;
         m_health.enabled = false;
